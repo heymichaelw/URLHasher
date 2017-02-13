@@ -35,6 +35,14 @@ namespace URLHasher.Controllers
             }
         }
 
+        [Route("s/{Shorturl}")]
+        public ActionResult Send(string Shorturl)
+        {
+            URL myurl = db.URLs.Where(u => u.Short == Shorturl).FirstOrDefault();
+            string longurl = myurl.Long;
+            return new RedirectResult(longurl);
+        }
+
         // GET: URL
         public ActionResult Index()
         {
