@@ -210,8 +210,21 @@
     <Compile Include="Migrations\201702131855350_Updated.Designer.cs">
       <DependentUpon>201702131855350_Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702132014039_AddedClickModel.cs" />
+    <Compile Include="Migrations\201702132014039_AddedClickModel.Designer.cs">
+      <DependentUpon>201702132014039_AddedClickModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702132020434_MoreClick.cs" />
+    <Compile Include="Migrations\201702132020434_MoreClick.Designer.cs">
+      <DependentUpon>201702132020434_MoreClick.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702132124226_AddedFKToClick.cs" />
+    <Compile Include="Migrations\201702132124226_AddedFKToClick.Designer.cs">
+      <DependentUpon>201702132124226_AddedFKToClick.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Click.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\URL.cs" />
@@ -281,6 +294,8 @@
     <Content Include="Views\URL\Details.cshtml" />
     <Content Include="Views\URL\Edit.cshtml" />
     <Content Include="Views\URL\Index.cshtml" />
+    <Content Include="Views\URL\MyBookmarks.cshtml" />
+    <Content Include="Views\URL\OtherIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +314,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702131855350_Updated.resx">
       <DependentUpon>201702131855350_Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132014039_AddedClickModel.resx">
+      <DependentUpon>201702132014039_AddedClickModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132020434_MoreClick.resx">
+      <DependentUpon>201702132020434_MoreClick.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702132124226_AddedFKToClick.resx">
+      <DependentUpon>201702132124226_AddedFKToClick.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -38,6 +38,15 @@ namespace URLHasher.Controllers
         [Route("s/{Shorturl}")]
         public ActionResult Send(string Shorturl)
         {
+            Click newclick = new Click()
+            {
+                Short = Shorturl,
+                Accessed = DateTime.Now
+            };
+            db.Clicks.Add(newclick);
+            db.SaveChanges();
+
+
             URL myurl = db.URLs.Where(u => u.Short == Shorturl).FirstOrDefault();
             string longurl = myurl.Long;
             return new RedirectResult(longurl);
@@ -50,14 +59,27 @@ namespace URLHasher.Controllers
             return View(uRLs.ToList());
         }
 
+        public ActionResult OtherIndex(string username)
+        {
+            var uRLs = db.URLs.Where(u => u.Owner.UserName == username);
+            return View(uRLs.ToList().OrderByDescending(b => b.Created));
+        }
+
+
+
+
         // GET: URL/Details/5
         public ActionResult Details(int? id)
         {
+            URL uRL = db.URLs.Find(id);
+         
+            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            URL uRL = db.URLs.Find(id);
+           
             if (uRL == null)
             {
                 return HttpNotFound();
@@ -66,6 +88,7 @@ namespace URLHasher.Controllers
         }
 
         // GET: URL/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -95,6 +118,14 @@ namespace URLHasher.Controllers
         // GET: URL/Edit/5
         public ActionResult Edit(int? id)
         {
+            URL url = db.URLs.Find(id);
+            var userId = User.Identity.GetUserId();
+            var bookmark = db.URLs.SingleOrDefault(m => m.Id == url.Id && m.OwnerId == userId);
+            if (bookmark == null)
+            {
+                return new HttpNotFoundResult();
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,6 +145,8 @@ namespace URLHasher.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Description,Long,Short,Created,OwnerId")] URL uRL)
         {
+
+
             if (ModelState.IsValid)
             {
                 db.Entry(uRL).State = EntityState.Modified;
@@ -156,6 +189,24 @@ namespace URLHasher.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [Route("u/{Username}")]
+        public ActionResult MyBookmarks(string Username)
+        {
+            var user = User.Identity.GetUserName();
+            if (user == Username)
+            {
+                var bookmarks = db.URLs.Include(b => b.Owner).Where(b => b.Owner.UserName == Username);
+                return View(bookmarks.ToList().OrderByDescending(b => b.Created));
+            }
+            else
+            {
+                var bookmarks = db.URLs.Include(b => b.Owner).Where(b => b.Owner.UserName == Username);
+                return RedirectToAction("OtherIndex", new { Username });
+            }
+
+            
         }
     }
 }
