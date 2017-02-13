@@ -25,9 +25,12 @@ namespace URLHasher.Models
         {
         }
 
+        public DbSet<URL> URLs { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }

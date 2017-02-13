@@ -198,12 +198,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\URLController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201702131758159_Initial.cs" />
     <Compile Include="Migrations\201702131758159_Initial.Designer.cs">
       <DependentUpon>201702131758159_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702131855350_Updated.cs" />
+    <Compile Include="Migrations\201702131855350_Updated.Designer.cs">
+      <DependentUpon>201702131855350_Updated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -271,6 +276,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\URL\Create.cshtml" />
+    <Content Include="Views\URL\Delete.cshtml" />
+    <Content Include="Views\URL\Details.cshtml" />
+    <Content Include="Views\URL\Edit.cshtml" />
+    <Content Include="Views\URL\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -286,6 +296,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201702131758159_Initial.resx">
       <DependentUpon>201702131758159_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702131855350_Updated.resx">
+      <DependentUpon>201702131855350_Updated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
