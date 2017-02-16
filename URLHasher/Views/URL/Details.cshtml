@@ -4,6 +4,8 @@
     ViewBag.Title = "Details";
 }
 
+
+
 <h2>Details</h2>
 
 <div>
@@ -62,14 +64,18 @@
             {
                 <h4>Your vote has been counted!</h4>
             }
+            else if (ViewBag.Owner == Model.Owner.Id)
+            {
+                <h4>Your link!</h4>            
+            }
             else
             {
                 using (Html.BeginForm())
                 {
-                    <input type="submit" value="Upvote" class="btn btn-warning" />
+                    < input type = "submit" value = "Upvote" class="btn btn-warning" />
                 }
             }
-           
+
         </dd>
 
     </dl>

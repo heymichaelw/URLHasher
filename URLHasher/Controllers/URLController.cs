@@ -56,7 +56,7 @@ namespace URLHasher.Controllers
         public ActionResult Index()
         {
             var uRLs = db.URLs.Include(u => u.Owner);
-            return View(uRLs.ToList());
+            return View(uRLs.ToList().OrderByDescending(b => b.Created));
         }
 
         public ActionResult OtherIndex(string username)
@@ -71,6 +71,7 @@ namespace URLHasher.Controllers
             URL uRL = db.URLs.Find(id);
             var me = User.Identity.GetUserId();
             bool isUpvoted = db.Upvotes.Where(u => (u.VotedURLId == id) && (u.VoterId == me)).Any();
+            ViewBag.Owner = me;
             ViewBag.isUpvoted = isUpvoted;
 
             if (id == null)
@@ -205,6 +206,8 @@ namespace URLHasher.Controllers
             base.Dispose(disposing);
         }
 
+
+
         [Route("u/{Username}")]
         public ActionResult MyBookmarks(string Username)
         {
@@ -221,6 +224,13 @@ namespace URLHasher.Controllers
             }
 
             
+        }
+
+        public ActionResult MyBookmarks()
+        {
+            var user = User.Identity.GetUserName();
+            var bookmarks = db.URLs.Where(b => b.Owner.UserName == user);
+            return View(bookmarks);
         }
     }
 }

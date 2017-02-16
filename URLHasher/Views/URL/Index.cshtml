@@ -6,9 +6,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -38,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.Owner.UserName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            <a href="@Url.Action("Details", "URL", new { id = item.Id })"><span>@Html.DisplayFor(modelItem => item.Title)</span></a>
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
