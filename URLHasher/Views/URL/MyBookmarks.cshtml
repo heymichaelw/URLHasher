@@ -52,7 +52,7 @@
 <table class="table">
     <tr>
         <th>
-            <h2>Likes</h2>
+            <h2>Upvotes</h2>
         </th>
     </tr>
 
@@ -61,6 +61,9 @@
     <tr>
         <td>
             <h4><a href="@Url.Action("Details", "URL", new { id = upvote.VotedURLId })"><span>@upvote.VotedURL.Title</span></a></h4>
+        </td>
+        <td>
+            <h6><a href="@Url.Action("DeleteUpvote", "URL", new { id = upvote.Id})"><span>Delete</span></a></h6>
         </td>
     </tr>
 }

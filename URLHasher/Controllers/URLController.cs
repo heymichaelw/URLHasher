@@ -197,6 +197,14 @@ namespace URLHasher.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult DeleteUpvote(int id)
+        {
+            Upvote upvote = db.Upvotes.Where(u => u.Id == id).FirstOrDefault();
+            db.Upvotes.Remove(upvote);
+            db.SaveChanges();
+            return RedirectToAction("MyBookmarks");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
