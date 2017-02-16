@@ -218,15 +218,16 @@
     <Compile Include="Migrations\201702132020434_MoreClick.Designer.cs">
       <DependentUpon>201702132020434_MoreClick.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702132124226_AddedFKToClick.cs" />
-    <Compile Include="Migrations\201702132124226_AddedFKToClick.Designer.cs">
-      <DependentUpon>201702132124226_AddedFKToClick.cs</DependentUpon>
+    <Compile Include="Migrations\201702150029227_AddedUpvote.cs" />
+    <Compile Include="Migrations\201702150029227_AddedUpvote.Designer.cs">
+      <DependentUpon>201702150029227_AddedUpvote.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Click.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Upvote.cs" />
     <Compile Include="Models\URL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -321,8 +322,8 @@
     <EmbeddedResource Include="Migrations\201702132020434_MoreClick.resx">
       <DependentUpon>201702132020434_MoreClick.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702132124226_AddedFKToClick.resx">
-      <DependentUpon>201702132124226_AddedFKToClick.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201702150029227_AddedUpvote.resx">
+      <DependentUpon>201702150029227_AddedUpvote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

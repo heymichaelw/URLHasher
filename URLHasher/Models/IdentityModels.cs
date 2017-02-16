@@ -27,6 +27,7 @@ namespace URLHasher.Models
 
         public DbSet<URL> URLs { get; set; }
         public DbSet<Click> Clicks { get; set; }
+        public DbSet<Upvote> Upvotes { get; set; }
 
         public static ApplicationDbContext Create()
         {

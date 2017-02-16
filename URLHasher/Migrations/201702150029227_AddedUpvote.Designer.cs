@@ -7,13 +7,13 @@ namespace URLHasher.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedFKToClick : IMigrationMetadata
+    public sealed partial class AddedUpvote : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedFKToClick));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedUpvote));
         
         string IMigrationMetadata.Id
         {
-            get { return "201702132124226_AddedFKToClick"; }
+            get { return "201702150029227_AddedUpvote"; }
         }
         
         string IMigrationMetadata.Source

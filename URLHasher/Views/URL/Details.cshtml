@@ -57,11 +57,24 @@
         <dd>
             @Html.DisplayFor(model => model.Created)
         </dd>
+        <dd>
+            @if (ViewBag.isUpvoted)
+            {
+                <h4>Your vote has been counted!</h4>
+            }
+            else
+            {
+                using (Html.BeginForm())
+                {
+                    <input type="submit" value="Upvote" class="btn btn-warning" />
+                }
+            }
+           
+        </dd>
 
     </dl>
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

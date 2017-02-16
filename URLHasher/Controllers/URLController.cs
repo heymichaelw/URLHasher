@@ -65,15 +65,13 @@ namespace URLHasher.Controllers
             return View(uRLs.ToList().OrderByDescending(b => b.Created));
         }
 
-
-
-
         // GET: URL/Details/5
         public ActionResult Details(int? id)
         {
             URL uRL = db.URLs.Find(id);
-         
-            
+            var me = User.Identity.GetUserId();
+            bool isUpvoted = db.Upvotes.Where(u => (u.VotedURLId == id) && (u.VoterId == me)).Any();
+            ViewBag.isUpvoted = isUpvoted;
 
             if (id == null)
             {
@@ -85,6 +83,22 @@ namespace URLHasher.Controllers
                 return HttpNotFound();
             }
             return View(uRL);
+        }
+
+        [HttpPost]
+        public ActionResult Details (int id)
+        {
+            URL url = db.URLs.Find(id);
+
+            Upvote upvote = new Upvote
+            {
+                VoterId = User.Identity.GetUserId(),
+                VotedURLId = url.Id
+            };
+
+            db.Upvotes.Add(upvote);
+            db.SaveChanges();
+            return RedirectToAction("Details");
         }
 
         // GET: URL/Create
