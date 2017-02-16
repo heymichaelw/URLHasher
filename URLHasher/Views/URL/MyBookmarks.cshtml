@@ -49,3 +49,22 @@
 </table>
 
 
+<table class="table">
+    <tr>
+        <th>
+            <h2>Likes</h2>
+        </th>
+    </tr>
+
+@foreach (var upvote in ViewBag.Likes)
+{
+    <tr>
+        <td>
+            <h4><a href="@Url.Action("Details", "URL", new { id = upvote.VotedURLId })"><span>@upvote.VotedURL.Title</span></a></h4>
+        </td>
+    </tr>
+}
+
+</table>
+
+

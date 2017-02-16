@@ -211,7 +211,10 @@ namespace URLHasher.Controllers
         [Route("u/{Username}")]
         public ActionResult MyBookmarks(string Username)
         {
+            
+
             var user = User.Identity.GetUserName();
+            
             if (user == Username)
             {
                 var bookmarks = db.URLs.Include(b => b.Owner).Where(b => b.Owner.UserName == Username);
@@ -228,6 +231,10 @@ namespace URLHasher.Controllers
 
         public ActionResult MyBookmarks()
         {
+            var userid = User.Identity.GetUserId();
+
+            ViewBag.Likes = db.Upvotes.Include(u => u.VotedURL).Where(u => u.VoterId == userid).ToList();
+
             var user = User.Identity.GetUserName();
             var bookmarks = db.URLs.Where(b => b.Owner.UserName == user);
             return View(bookmarks);
