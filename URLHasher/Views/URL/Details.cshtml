@@ -59,6 +59,12 @@
         <dd>
             @Html.DisplayFor(model => model.Created)
         </dd>
+        <dt>
+            <span>Views</span>
+        </dt>
+        <dd>
+            <h6>@ViewBag.Clicks</h6>
+        </dd>
         <dd>
             @if (ViewBag.isUpvoted)
             {

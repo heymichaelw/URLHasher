@@ -74,6 +74,9 @@ namespace URLHasher.Controllers
             ViewBag.Owner = me;
             ViewBag.isUpvoted = isUpvoted;
 
+            var clicks = db.Clicks.Where(c => c.Short == uRL.Short).ToList().Count();
+            ViewBag.Clicks = clicks;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
