@@ -127,7 +127,7 @@ namespace URLHasher.Controllers
 
                 db.URLs.Add(uRL);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ShortView", uRL );
             }
 
             return View(uRL);
@@ -249,6 +249,13 @@ namespace URLHasher.Controllers
             var user = User.Identity.GetUserName();
             var bookmarks = db.URLs.Where(b => b.Owner.UserName == user);
             return View(bookmarks);
+        }
+
+        public ActionResult ShortView(URL uRL)
+        {
+            var urlshort = uRL.Short;
+            ViewBag.Short = "http://localhost:57714/s/" + $"{uRL.Short}";
+            return View(uRL);
         }
     }
 }

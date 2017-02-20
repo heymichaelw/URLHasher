@@ -295,6 +295,7 @@
     <Content Include="Views\URL\Index.cshtml" />
     <Content Include="Views\URL\MyBookmarks.cshtml" />
     <Content Include="Views\URL\OtherIndex.cshtml" />
+    <Content Include="Views\URL\ShortView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
